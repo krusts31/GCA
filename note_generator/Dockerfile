@@ -1,0 +1,20 @@
+# Using the official Tensorflow GPU image as base
+FROM tensorflow/tensorflow:latest
+
+# Label it
+LABEL maintainer="test"
+
+# Install any additional packages you want
+RUN pip install --upgrade pip
+
+RUN pip install numpy \
+  pandas \
+  sounddevice \
+  librosa \
+  matplotlib
+
+# Set a working directory
+WORKDIR /app
+
+# Copy the rest of your app's source code from your host to your image filesystem.
+COPY . .
