@@ -1,0 +1,17 @@
+# Set the base image
+FROM python:3.8
+
+# Label it
+LABEL maintainer="Your Name <your.email@example.com>"
+
+# Install scikit-learn and numpy
+RUN pip install --upgrade pip
+RUN pip install scikit-learn numpy
+
+# Set a working directory
+WORKDIR /app
+
+# Copy the rest of your app's source code from your host to your image filesystem.
+COPY . .
+
+CMD ["python", "./your_script.py"]

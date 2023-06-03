@@ -1,11 +1,11 @@
 import numpy as np
 import sounddevice as sd
 import matplotlib.pyplot as plt
-import librosa
 import librosa.display
+import librosa
 
 # Define the duration of audio to record in seconds
-duration = 10.0  # for example, 2 seconds
+duration = 1.0  # for example, 2 seconds
 # Define the sample rate
 sample_rate = 44100  # typical value for audio processing
 
@@ -13,6 +13,7 @@ sd.default.device = 11
 
 # Record audio for 'duration' seconds
 audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1)
+print(audio, type(audio), audio.shape)
 
 # Wait for the recording to finish
 sd.wait()
