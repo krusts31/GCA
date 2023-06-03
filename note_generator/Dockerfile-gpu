@@ -1,0 +1,22 @@
+# Using the official Tensorflow GPU image as base
+FROM tensorflow/tensorflow:latest-gpu
+
+# Label it
+LABEL maintainer="test"
+
+RUN apt update && apt upgrade -y && apt install vim -y
+
+# Install any additional packages you want
+RUN pip install --upgrade pip
+
+RUN pip install numpy \
+  pandas \
+  sounddevice \
+  librosa \
+  matplotlib \
+  scikit-image
+
+# Set a working directory
+WORKDIR /app
+
+CMD [ "tail", "-f", "/dev/null" ]
