@@ -17,7 +17,6 @@ notes = ['E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3', 'D3', '
 # Load your model
 model = load_model('my_model_masive.h5')
 
-# Queue to hold audio data
 audio_queue = queue.Queue()
 
 # Define the duration of audio to record in seconds
@@ -45,16 +44,10 @@ def butter_highpass_filter(data, cutoff, fs, order=5):
 
 def record_audio(audio_queue):
     while True:
-        # Record audio for 'duration' seconds
-        audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, device=7)
+        audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, device=6)
 
-        # Wait for the recording to finish
         sd.wait()
-        # Since the audio is recorded as 2D array, we take the first dimension to get 1D audio data
         audio = audio[:, 0]
-        # Put audio data into queue
-        #
-        #print("min: ", np.abs(librosa.stft(audio)).min())
         if (np.abs(librosa.stft(audio)).max() > 50):
             print("max: ", np.abs(librosa.stft(audio)).max())
             audio_queue.put(audio)
