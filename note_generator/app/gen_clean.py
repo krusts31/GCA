@@ -5,8 +5,8 @@ from scipy import signal
 
 # Define constants
 sample_rate = 44100  # standard audio sample rate
-duration = 0.4  # duration of each note in seconds
-variations = 300  # number of variations for each note
+duration = 0.02  # duration of each note in seconds
+variations = 1000  # number of variations for each note
 waveforms = ['sine', 'square', 'triangle', 'sawtooth']
 
 # Generate frequencies for all possible notes on a standard-tuned guitar
@@ -18,8 +18,8 @@ frequencies = [(2**((n-49)/12))*440 for n in range(16, 69)]
 note_freq_dict = dict(zip(notes, frequencies))
 
 # Create directories to store files
-#for waveform in waveforms:
-#    os.makedirs(waveform + "_20ms", exist_ok=True)
+for waveform in waveforms:
+    os.makedirs(waveform + "_20ms", exist_ok=True)
 
 # Generate each note and save to .wav file
 for note, freq in note_freq_dict.items():
@@ -44,4 +44,4 @@ for note, freq in note_freq_dict.items():
             audio = audio.astype(np.int16)
 
             # Write .wav file for the note
-            write(f'music/{note}_{i}-20ms.wav', sample_rate, audio)
+            write(f'{waveform}_20ms/{note}_{i}.wav', sample_rate, audio)

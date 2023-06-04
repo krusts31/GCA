@@ -4,7 +4,7 @@ import librosa.display
 import matplotlib.pyplot as plt
 
 # Load the audio file
-y, sr = librosa.load('./music/E2_533.wav')
+y, sr = librosa.load('./3noteswav/B2&E3&F#3.wav')
 
 # Compute the spectrogram
 D = librosa.amplitude_to_db(np.abs(librosa.stft(y)), ref=np.max)

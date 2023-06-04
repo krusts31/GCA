@@ -373,3 +373,5 @@ zsdoc/data
 music
 music/
 my_model.h5
+*.h
+*.wav
