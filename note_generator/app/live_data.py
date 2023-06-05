@@ -44,7 +44,7 @@ def butter_highpass_filter(data, cutoff, fs, order=5):
 
 def record_audio(audio_queue):
     while True:
-        audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, device=6)
+        audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, device=6)#here withe the id of audio interface
 
         sd.wait()
         audio = audio[:, 0]

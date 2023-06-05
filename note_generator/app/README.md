@@ -1,3 +1,8 @@
+### Before starting do
+```bash
+conda activate GCA-env
+```
+
 > This will list all the devices connected to your machine.
 > Find the index of your audio interface and remember the number.
 ```bash
@@ -24,7 +29,7 @@ python3 gen.py
 > The goal here is to use recorded notes and then multiply them to have more data for the model.
 
 ```bash
-python3 gen.py
+python3 gen_nice.py
 ```
 
 > If you run this, you need to set your audio interface ID here!
@@ -40,4 +45,16 @@ python3 gen.py
 
 ```bash
 python3 live_data.py
+```
+
+> use this to pass a single file to the nn
+
+```bash
+python3 single_file.py
+```
+
+> use this to se a spectorgram from a file
+
+```bash
+python3 spectorgram.py
 ```
